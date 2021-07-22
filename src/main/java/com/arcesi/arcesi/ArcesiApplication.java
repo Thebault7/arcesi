@@ -10,3 +10,11 @@ public class ArcesiApplication {
 		SpringApplication.run(ArcesiApplication.class, args);
 	}
 }
+
+@RestController
+class HelloController {
+	
+	String hello() {
+		return "Salut tout le monde !!!";
+	}
+}
