@@ -2,7 +2,8 @@ package com.arcesi.arcesi.controller;
 
 import java.util.ArrayList;
 import java.util.List;
- 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.arcesi.arcesi.form.PersonForm;
 import com.arcesi.arcesi.model.Person;
+import com.arcesi.arcesi.repository.IPersonRepository;
  
 @Controller
 public class MainController {
+	
+	@Autowired
+	private static IPersonRepository ipr;
  
     private static List<Person> persons = new ArrayList<Person>();
  
     static {
-        persons.add(new Person("Bill", "Gates"));
-        persons.add(new Person("Steve", "Jobs"));
+    	ipr.saveAndFlush(new Person("Bill", "Gates"));
+        ipr.saveAndFlush(new Person("Steve", "Jobs"));
+        ipr.saveAndFlush(new Person("Fred", "Thébault"));
     }
  
     // Injectez (inject) via application.properties.
@@ -41,6 +47,8 @@ public class MainController {
     @RequestMapping(value = { "/personList" }, method = RequestMethod.GET)
     public String personList(Model model) {
  
+    	persons = ipr.findAll();
+    	System.out.println(persons.get(0).toString());
         model.addAttribute("persons", persons);
  
         return "personList";
