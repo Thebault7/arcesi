@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Page de login</title>
 </head>
 <body>
-	<p>LOGIN !!</p>
+	<h1 th:utext="$(user.userName)">...</h1>
+	<h1 th:utext="$(user.password)">...</h1>
 </body>
 </html>
