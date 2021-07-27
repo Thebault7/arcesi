@@ -19,15 +19,9 @@ import com.arcesi.arcesi.repository.IPersonRepository;
 public class MainController {
 	
 	@Autowired
-	private static IPersonRepository ipr;
+	private IPersonRepository ipr;
  
     private static List<Person> persons = new ArrayList<Person>();
- 
-    static {
-    	ipr.saveAndFlush(new Person("Bill", "Gates"));
-        ipr.saveAndFlush(new Person("Steve", "Jobs"));
-        ipr.saveAndFlush(new Person("Fred", "Thébault"));
-    }
  
     // Injectez (inject) via application.properties.
     @Value("${welcome.message}")
@@ -38,6 +32,10 @@ public class MainController {
  
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
+    	
+		ipr.saveAndFlush(new Person("Bill", "Gates"));
+		ipr.saveAndFlush(new Person("Steve", "Jobs"));
+        ipr.saveAndFlush(new Person("Fred", "Thébault"));
  
         model.addAttribute("message", message);
  
