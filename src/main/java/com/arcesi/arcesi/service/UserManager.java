@@ -21,13 +21,14 @@ public class UserManager {
 //	private IWordHashGenerator iwhg;
 	
 	public User saveAndFlush(User u) {
-		try {
-			IWordHashGenerator iwhg = new WordHashGenerator();
-			u.setPassword(iwhg.generateHash(u.getPassword(), "SHA-512"));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-			System.out.println("Hashing du mot de passe a échoué.");
-		}
+//		try {
+//			IWordHashGenerator iwhg = new WordHashGenerator();
+//			u.setPassword(iwhg.generateHash(u.getPassword(), "SHA-512"));
+//		} catch (NoSuchAlgorithmException e) {
+//			e.printStackTrace();
+//			System.out.println("Hashing du mot de passe a échoué.");
+//		}
+		u.setPassword("6473439242529538572345");
 		return iur.saveAndFlush(u);
 	}
 	
