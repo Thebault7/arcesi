@@ -11,4 +11,6 @@ public interface IUserRepository extends JpaRepository<User, Long> {
 	public User saveAndFlush(User u);
 	
 	public List<User> findAll();
+	
+	public User findOneByUserName(String userName);
 }

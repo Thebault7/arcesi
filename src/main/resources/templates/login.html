@@ -6,7 +6,30 @@
 	<title>Page de login</title>
 </head>
 <body>
-	<h1 th:utext="$(user.userName)">...</h1>
-	<h1 th:utext="$(user.password)">...</h1>
+	<h1>LOGIN !!!!</h1>
+	<form th:action="@{/verifyLogin}" th:object="${user}" method="POST">
+		<table border="1">
+			<tr>
+				<td>Identifiant : </td>
+				<td><input type="text" th:field="*{userName}" /></td>
+			</tr>
+			<tr>
+				<td>Mot de passe :</td>
+				<td><input type="password" th:field="*{password}" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form>
+	
+	
+	
+	<hr>
+	<span th:text="${user.userName}" />
+	<span th:text="${user.password}" />
+	<hr>
+	<h1 th:text="${user.password}">...</h1>
+	<h1 th:text="${user.userName}"></h1>
 </body>
 </html>
