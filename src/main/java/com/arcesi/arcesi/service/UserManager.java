@@ -28,8 +28,8 @@ public class UserManager {
 //			e.printStackTrace();
 //			System.out.println("Hashing du mot de passe a échoué.");
 //		}
-		System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIII   user: " + u.getPassword());
-		u.setPassword("6473439242529538572345");
+//		System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIII   user: " + u.getPassword());
+//		u.setPassword("6473439242529538572345");
 		return iur.saveAndFlush(u);
 	}
 	
