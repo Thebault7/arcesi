@@ -17,8 +17,8 @@ import com.arcesi.arcesi.service.UserManager;
 @Controller
 public class LoginController {
 	
-	@Autowired
-	private UserManager um;
+//	@Autowired
+//	private UserManager um;
 	
 //	// Injectez (inject) via application.properties.
 //	@Value("${welcome.message}")
@@ -33,16 +33,17 @@ public class LoginController {
 	
 	@RequestMapping(value = {"/", "/" + INDEX, "/" + LOGIN}, method = RequestMethod.GET)
 	public String goToLoginPage(Model model) {
-		model.addAttribute("user", um.saveAndFlush(new User("John", "azerty")));
-//		model.addAttribute("user", new User("John", "azerty"));
+//		model.addAttribute("user", um.saveAndFlush(new User("John", "azerty")));
+		model.addAttribute("user", new User("John", "azerty"));
 		return LOGIN;
 	}
 	
 	@RequestMapping(value = "/" + VERIFY_LOGIN, method = RequestMethod.POST)
 	public String verifyLogin(Model model, @ModelAttribute User user) {
-		User userFromDB = um.findOneByUserName(user.getUserName());
-		System.out.println("--------------------- " + userFromDB.getPassword());
-		model.addAttribute("user", new User(userFromDB.getPassword(), userFromDB.getPassword()));
+//		User userFromDB = um.findOneByUserName(user.getUserName());
+//		System.out.println("--------------------- " + userFromDB.getPassword());
+//		model.addAttribute("user", new User(userFromDB.getPassword(), userFromDB.getPassword()));
+		model.addAttribute("user", new User("Jack", "ytreza"));
 		return LOGIN;
 	}
 }
