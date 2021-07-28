@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.arcesi.arcesi.model.User;
 import com.arcesi.arcesi.utils.IWordHashGenerator;
+import com.arcesi.arcesi.utils.WordHashGenerator;
 import com.arcesi.arcesi.repository.IUserRepository;
 
 @Service
@@ -16,11 +17,12 @@ public class UserManager {
 
 	@Autowired
 	private IUserRepository iur;
-	@Autowired
-	private IWordHashGenerator iwhg;
+//	@Autowired
+//	private IWordHashGenerator iwhg;
 	
 	public User saveAndFlush(User u) {
 		try {
+			IWordHashGenerator iwhg = new WordHashGenerator();
 			u.setPassword(iwhg.generateHash(u.getPassword(), "SHA-512"));
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
