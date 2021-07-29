@@ -33,7 +33,7 @@ public class LoginController {
 	
 	@RequestMapping(value = {"/", "/" + INDEX, "/" + LOGIN}, method = RequestMethod.GET)
 	public String goToLoginPage(Model model) {
-		um.save(new User("Arcesi", "azerty"));
+		um.save(new User(222, "Arcesi", "azerty"));
 		model.addAttribute("user", new User());
 //		model.addAttribute("user", new User("John", "azerty"));
 		return LOGIN;
