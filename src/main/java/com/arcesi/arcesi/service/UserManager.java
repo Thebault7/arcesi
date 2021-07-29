@@ -1,6 +1,6 @@
 package com.arcesi.arcesi.service;
 
-import java.security.NoSuchAlgorithmException;
+//import java.security.NoSuchAlgorithmException;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.arcesi.arcesi.model.User;
-import com.arcesi.arcesi.utils.IWordHashGenerator;
-import com.arcesi.arcesi.utils.WordHashGenerator;
+//import com.arcesi.arcesi.utils.IWordHashGenerator;
+//import com.arcesi.arcesi.utils.WordHashGenerator;
 import com.arcesi.arcesi.repository.IUserRepository;
 
 @Service
@@ -39,5 +39,9 @@ public class UserManager {
 	
 	public User findOneByUserName(String userName) {
 		return iur.findOneByUserName(userName);
+	}
+	
+	public User save(User u) {
+		return iur.save(u);
 	}
 }
