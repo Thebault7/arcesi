@@ -1,35 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Page de login</title>
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="css/errorMessage.css">
 </head>
 <body>
-	<h1>LOGIN</h1>
-	<form th:action="@{/verifyLogin}" th:object="${user}" method="POST">
-		<table border="1">
-			<tr>
-				<td>Identifiant : </td>
-				<td><input type="text" th:field="*{userName}" /></td>
-			</tr>
-			<tr>
-				<td>Mot de passe :</td>
-				<td><input type="password" th:field="*{password}" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="Submit" /></td>
-			</tr>
-		</table>
-	</form>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" th:action="@{/verifyLogin}" th:object="${user}" method="POST">
+					<span class="login100-form-title p-b-20"> Bienvenue </span>
+					<span class="login100-form-title p-b-30">
+						<img src="img/elephant_zebre.jpg" />
+					</span>
+					
+					<div class="errorMessage">
+						<span th:text="${errorMessage}"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="email-input" type="text" th:field="*{userName}" onfocusout="verifyIfEmpty('email')"/>
+						<span class="focus-input100" id="email-text"
+							data-placeholder="Identifiant"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<span class="btn-show-pass"> </span>
+						<input class="input100" id="password-input" type="password" th:field="*{password}" onfocusout="verifyIfEmpty('password')" />
+						<span class="focus-input100" id="password-text"
+							data-placeholder="Mot de passe"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" type="submit">Connexion</button>
+						</div>
+					</div>
+
+	 				<div class="text-center p-t-100">
+						<!--  <span class="txt1"> Mot de passe oublié ? </span> <a class="txt2"
+							href="#"> Cliquer ici </a>		-->
+						<br>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	
+	<script type="text/javascript" src="js/login.js"></script>
 	
-	
-	<hr>
-	<span th:text="${user.userName}" />
-	<span th:text="${user.password}" />
-	<hr>
-	<h1 th:text="${user.password}">...</h1>
-	<h1 th:text="${user.userName}"></h1>
 </body>
 </html>
