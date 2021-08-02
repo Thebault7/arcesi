@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accueil</title>
+<link rel="stylesheet" href="css/accueil.css" />
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div>
+		<div>
+			<h1>Page d'accueil</h1>
+			<h2>
+				Vous êtes connecté en tant que "<strong th:text="${user.userName}"></strong>".
+			</h2>
+		</div>
+		<div>
+			<form th:action="@{/verifyLogin}" method="GET">
+				<button type="submit">Déconnexion</button>
+			</form>
+		</div>
+	</div>
+	<div id="containerAffichageBDDetSite">
+		<div id="containerVideoBDD">
+			<div>
+				<label for="texteAChercher">Titre de la vidéo</label> <input
+					type="text" id="texteAChercher" placeholder="Titre de la vidéo"
+					name="texteAChercher"
+					onKeyPress='if(event.keyCode == 13) genererURLselectionnerEnBDD();'
+					required />
+			</div>
+			<div>
+				<input type="button" value="Rechercher la vidéo en base de données"
+					onclick="genererURLselectionnerEnBDD()" />
+			</div>
+			<div id="afficherVideosDemandees"></div>
+		</div>
+		<div id="containerVideoSite">
+			<div>
+				<div>
+					<label for="rechercheAjax">Entrer le titre de la vidéo
+						DAILYMOTION à rechercher</label> <input type="text" id="rechercheAjax"
+						placeholder="Titre à chercher" name="rechercheAjax"
+						onKeyPress='if(event.keyCode == 13) creerURL();' required />
+				</div>
+				<div>
+					<input type="button" value="Cliquez ici" onclick="creerURL()" />
+				</div>
+				<div id="validationMessage"></div>
+				<div id="affichageVideos"></div>
+			</div>
+		</div>
+	</div>
+	<script src="js/affichageAnimation.js"></script>
+	<script src="js/requeteAJAXversSiteVideo.js"></script>
+	<script src="js/requeteAJAXselectVideosEnBDD.js"></script>
+</body>
+</html>
